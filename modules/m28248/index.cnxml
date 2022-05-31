@@ -1,0 +1,1228 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Relational Algebra</title>
+  <metadata>
+  <md:content-id>m28248</md:content-id><md:title>Relational Algebra</md:title>
+  <md:abstract>In this lecture, we will discuss the first formal languages for the relational models: Relational Algebra</md:abstract>
+  <md:uuid>34003838-f4ad-401d-8065-a3b09b17e371</md:uuid>
+</metadata>
+
+<content>
+    
+      <para id="id5651465">In this lecture, we will discuss the first formal languages for the relational models: Relational Algebra </para>
+      <section id="id-818649259756">
+        <title>Relational Algebra</title>
+        <para id="id6046420">Relational Algebra (RA) can be viewed as a data manipulation language for relational model. It consists of several basic operations which is enable user to specify retrieval requests. RA is called a procedural language in which user need to specify how to retrieve the expected data. </para>
+        <para id="id6046434">Relational Algebra has the following components:</para>
+        <list id="id6046439" list-type="bulleted">
+          <item>Operands: Relations or Variables that represent relations</item>
+          <item>Operators that map relations to relations</item>
+          <item>Rules for combining operands and operators to relational algebra expression</item>
+          <item>Rules for evaluating those expressions</item>
+        </list>
+        <para id="id5731221">Operations of relational algebra include the followings:</para>
+        <list id="id5731226" list-type="bulleted">
+          <item>Union, Intersect, Set Difference, Cartesian Product are operations based on set theory</item>
+          <item>Select, Project, Join, Division are operations developed especially for relational databases. </item>
+        </list>
+        <figure id="id5731589"><media id="id8560836" alt=""><image src="../../media/relAlgebra-1.png" mime-type="image/png"/></media>
+        <caption>Example Database</caption>
+        </figure>
+        <section id="id-0943166261156">
+          <title>Relational Algebra Operations from Set Theory</title>
+          <para id="id4052182"><term>Definition:</term> Two relations r(A1, A2, …, An) and s(B1, B2, …, Bn) are union compatible if they have the same degree n and dom(Ai) = dom(Bi) for 1 ≤ i ≤ n. </para>
+          <para id="id5874919">This mean two union compatible relations have the same number of attributes and each corresponding pair of attributes have the same domain </para>
+          <list id="id6518838" list-type="enumerated"><item><term>UNION Operation</term></item>
+          </list>
+          <para id="id6518846">The UNION operation combines two union compatible relations into a single relation via set union of sets of tuples. </para>
+          <list id="id6518853" list-type="bulleted">
+            <item>Notation: 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mi fontstyle="italic">r1</m:mi><m:mrow><m:mi/><m:mo stretchy="false">∪</m:mo><m:mi/></m:mrow><m:mi fontstyle="italic">r2</m:mi><m:mi/></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{r1` union `r2`} {}</m:annotation></m:semantics></m:math></item>
+          </list>
+          <figure id="id6494513">
+            <media id="id1166730362868" alt=""><image src="../../media/graphics2.png" mime-type="image/png"/></media>
+          <caption>Union Operation Notation</caption>
+          </figure>
+          <list id="id6150054" list-type="bulleted"><item><m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mi fontstyle="italic">r1</m:mi><m:mrow><m:mi/><m:mo stretchy="false">∪</m:mo><m:mi/></m:mrow><m:mrow><m:mi fontstyle="italic">r2</m:mi><m:mo stretchy="false">=</m:mo><m:mrow><m:mo stretchy="false">{</m:mo><m:mrow><m:mi>t</m:mi><m:mo stretchy="false">∣</m:mo><m:mrow><m:mrow><m:mi>t</m:mi><m:mo stretchy="false">∈</m:mo><m:mrow><m:mi fontstyle="italic">r1</m:mi><m:mo stretchy="false">∨</m:mo><m:mi>t</m:mi></m:mrow></m:mrow><m:mo stretchy="false">∈</m:mo><m:mi fontstyle="italic">r2</m:mi></m:mrow></m:mrow><m:mo stretchy="false">}</m:mo></m:mrow></m:mrow></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{r1` union `r2= lbrace t \lline t in r1 or t in r2 rbrace } {}</m:annotation></m:semantics></m:math> where r1(R) and r2(R)  </item>
+      <item>Result size: 
+<m:math><m:semantics><m:mrow/><m:annotation encoding="StarMath 5.0">{}</m:annotation></m:semantics></m:math><m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mo stretchy="false">∣</m:mo><m:mi fontstyle="italic">r1</m:mi><m:mrow><m:mi/><m:mo stretchy="false">∪</m:mo><m:mi/></m:mrow><m:mi fontstyle="italic">r2</m:mi><m:mo stretchy="false">∣</m:mo><m:mrow><m:mi/><m:mo stretchy="false">≤</m:mo><m:mi/></m:mrow><m:mo stretchy="false">∣</m:mo><m:mi fontstyle="italic">r1</m:mi><m:mrow><m:mo stretchy="false">∣</m:mo><m:mo stretchy="false">+</m:mo><m:mo stretchy="false">∣</m:mo></m:mrow><m:mi fontstyle="italic">r2</m:mi><m:mo stretchy="false">∣</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ \lline r1` union `r2 \lline ` &lt;= ` \lline r1 \lline + \lline r2 \lline } {}</m:annotation></m:semantics></m:math></item>
+      <item>Result schema: R</item>
+      <item>Producing the result of UNION<list id="id27113109" list-type="bulleted"><item>Make a copy of relation r1</item><item>For each tuple t in relation r2, check whether it is in the result or not. If it is not already in the result then place it there. </item></list></item>
+      <item>Example: </item>
+    </list>
+          <figure id="id5378246">
+            <media id="id1166734347198" alt=""><image src="../../media/graphics3.png" mime-type="image/png"/></media>
+          <caption>Union Operation Example</caption>
+          </figure>
+          <list id="id5574488" list-type="enumerated"><item><term>INTERSECTION Operation</term></item>
+          </list>
+          <para id="id5574501">The INTERSECTION operation combines two union compatible relations into a single relation via set intersection of sets of tuples.</para>
+          <list id="id5574508" list-type="bulleted">
+            <item>Notation: 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mi fontstyle="italic">r1</m:mi><m:mrow><m:mi/><m:mo stretchy="false">∩</m:mo><m:mi/></m:mrow><m:mi fontstyle="italic">r2</m:mi></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{r1` intersection `r2} {}</m:annotation></m:semantics></m:math></item>
+          </list>
+          <figure id="id5376172">
+            <media id="id8018590" alt=""><image src="../../media/graphics4.png" mime-type="image/png"/></media>
+          <caption>Intersection Operation Notation</caption>
+          </figure>
+          <list id="id5724179" list-type="bulleted"><item><m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mi fontstyle="italic">r1</m:mi><m:mrow><m:mi/><m:mo stretchy="false">∩</m:mo><m:mi/></m:mrow><m:mrow><m:mi fontstyle="italic">r2</m:mi><m:mo stretchy="false">=</m:mo><m:mrow><m:mo stretchy="false">{</m:mo><m:mrow><m:mi>t</m:mi><m:mo stretchy="false">∣</m:mo><m:mrow><m:mrow><m:mi>t</m:mi><m:mo stretchy="false">∈</m:mo><m:mrow><m:mi fontstyle="italic">r1</m:mi><m:mo stretchy="false">∧</m:mo><m:mi>t</m:mi></m:mrow></m:mrow><m:mo stretchy="false">∈</m:mo><m:mi fontstyle="italic">r2</m:mi></m:mrow></m:mrow><m:mo stretchy="false">}</m:mo></m:mrow></m:mrow></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{r1` intersection `r2= lbrace t \lline t in r1 and t in r2 rbrace } {}</m:annotation></m:semantics></m:math> where r1(R) and r2(R)</item>
+      <item>Result size: 
+<m:math><m:semantics><m:mtable><m:mtr><m:mrow><m:mo stretchy="false">∣</m:mo><m:mi fontstyle="italic">r1</m:mi><m:mrow><m:mi/><m:mo stretchy="false">∩</m:mo><m:mi/></m:mrow><m:mi fontstyle="italic">r2</m:mi><m:mo stretchy="false">∣</m:mo><m:mrow><m:mi/><m:mo stretchy="false">≤</m:mo><m:mi/></m:mrow><m:mtext>min</m:mtext><m:mo stretchy="false">(</m:mo><m:mo stretchy="false">∣</m:mo><m:mi fontstyle="italic">r1</m:mi><m:mo stretchy="false">∣</m:mo><m:mi>,</m:mi><m:mo stretchy="false">∣</m:mo><m:mi fontstyle="italic">r2</m:mi><m:mo stretchy="false">∣</m:mo><m:mo stretchy="false">)</m:mo></m:mrow></m:mtr><m:mtr><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow/></m:mrow></m:mstyle><m:mrow><m:mrow/><m:mrow/></m:mrow></m:mrow></m:mtr></m:mtable><m:annotation encoding="StarMath 5.0"> size 12{ \lline r1` intersection `r2 \lline ` &lt;= `"min" \(  \lline r1 \lline , \lline r2 \lline  \)  rbrace } {}</m:annotation></m:semantics></m:math></item>
+      <item>Result schema: R</item>
+      <item>Producing the result of INTERSECTION<list id="id33726659" list-type="bulleted"><item>Initially, result set is empty</item><item>For each tuple t in relation r1, if t is in the relation r2 then place t in the result set. </item></list></item>
+      <item>Example</item>
+    </list>
+          <figure id="id4051227">
+            <media id="id1166735664484" alt=""><image src="../../media/graphics5.png" mime-type="image/png"/></media>
+          <caption>Intersection Operation Example</caption>
+
+          </figure>
+          <list id="id4051250" list-type="enumerated"><item><term>SET DIFFERENCE Operation</term></item>
+
+          
+</list>
+          <para id="id4051264">The DIFFERENCE operation finds the set of tuples that exist in one relation but do not occur in the other union compatible relation</para>
+          <list id="id5528439" list-type="bulleted">
+            <item>Notation: r1 \ r2</item>
+          </list>
+          <figure id="id5528453">
+            <media id="id1166739343657" alt=""><image src="../../media/graphics6.png" mime-type="image/png"/></media>
+          <caption>Difference Operation Notation</caption>
+
+          </figure>
+          <list id="id5742636" list-type="bulleted"><item><m:math><m:semantics><m:mtable><m:mtr><m:mrow/></m:mtr><m:mtr><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mi fontstyle="italic">r1</m:mi><m:mi/><m:mrow><m:mo stretchy="false"/><m:mo stretchy="false">=</m:mo><m:mrow><m:mo stretchy="false">{</m:mo><m:mrow><m:mi>t</m:mi><m:mo stretchy="false">∣</m:mo><m:mrow><m:mi>t</m:mi><m:mo stretchy="false">∈</m:mo><m:mi fontstyle="italic">r1</m:mi></m:mrow><m:mrow><m:mi/><m:mo stretchy="false">∧</m:mo><m:mi/></m:mrow><m:mrow><m:mi>t</m:mi><m:mo stretchy="false">∉</m:mo><m:mi fontstyle="italic">r2</m:mi></m:mrow></m:mrow><m:mo stretchy="false">}</m:mo></m:mrow></m:mrow></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow></m:mtr></m:mtable><m:annotation encoding="StarMath 5.0"> size 12{r1`\`r2= lbrace t \lline t in r1` and `t notin r2 rbrace } {}</m:annotation></m:semantics></m:math> where r1(R) and r2(R)</item>
+      <item>Result schema: R</item>
+      <item>Producing the result of the DIFFERENCE operation<list id="id30078753" list-type="bulleted"><item>Initially, result set is empty</item><item>For each tuple in r1, check whether it appear in r2 or not. If it does not then place it in the result set. Otherwise, ignores it</item></list></item>
+      <item>Example</item>
+    </list>
+          <figure id="id5910360">
+            <media id="id8047500" alt=""><image src="../../media/graphics7.png" mime-type="image/png"/></media>
+          <caption>Difference Operation Example</caption>
+          </figure>
+          <list id="id6046584" list-type="enumerated"><item><term>CARTESIAN PRODUCT Operation</term></item>
+          </list>
+          <para id="id6046598">The PRODUCT operation combines information from two relations pairwise on tuples. </para>
+          <list id="id6046603" list-type="bulleted"><item>Notation: r x s</item>
+      <item><m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mi>r</m:mi><m:mrow><m:mi/><m:mo stretchy="false">×</m:mo><m:mi/></m:mrow><m:mi>s</m:mi><m:mrow><m:mi/><m:mo stretchy="false">=</m:mo><m:mi/></m:mrow><m:mrow><m:mo stretchy="false">{</m:mo><m:mrow><m:mo stretchy="false">(</m:mo><m:mi fontstyle="italic">t1</m:mi><m:mi/><m:mi>,</m:mi><m:mi/><m:mi fontstyle="italic">t2</m:mi><m:mo stretchy="false">)</m:mo><m:mi/><m:mo stretchy="false">∣</m:mo><m:mi/><m:mrow><m:mi fontstyle="italic">t1</m:mi><m:mo stretchy="false">∈</m:mo><m:mrow><m:mi>r</m:mi><m:mo stretchy="false">∧</m:mo><m:mi/></m:mrow></m:mrow><m:mrow><m:mi fontstyle="italic">t2</m:mi><m:mo stretchy="false">∈</m:mo><m:mi/></m:mrow><m:mi>s</m:mi></m:mrow><m:mo stretchy="false">}</m:mo></m:mrow></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{r` times `s`=` lbrace  \( t1`,`t2 \) ` \lline `t1 in r and `t2 in `s rbrace } {}</m:annotation></m:semantics></m:math> where r(R) and s(S)</item>
+      <item>Each tuple in the result contains all attributes in r and s, possibly with some fields renamed to avoid ambiguity. The result set contains all possible tuple that can be construct from one tuple in r and one tuple in s. </item>
+      <item>Result schema: If we have R(A1, A2, …, An) and S(B1, B2, …, Bm) then the list of attributes in Result is (A1, A2, …, An, B1, B2, …, Bm)</item>
+      <item>Result size: 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mo stretchy="false">∣</m:mo><m:mi>r</m:mi><m:mrow><m:mi/><m:mo stretchy="false">×</m:mo><m:mi>s</m:mi></m:mrow><m:mo stretchy="false">∣</m:mo><m:mrow><m:mi/><m:mo stretchy="false">=</m:mo><m:mi/></m:mrow><m:mo stretchy="false">∣</m:mo><m:mi>r</m:mi><m:mo stretchy="false">∣</m:mo><m:mrow><m:mi/><m:mo stretchy="false">∗</m:mo><m:mi/></m:mrow><m:mo stretchy="false">∣</m:mo><m:mi>s</m:mi><m:mo stretchy="false">∣</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ \lline r` times s \lline `=` \lline r \lline `*` \lline s \lline } {}</m:annotation></m:semantics></m:math></item>
+      <item>Producing the result of PRODUCT operation:<list id="id30077667" list-type="bulleted"><item>For each tuple in r, form new tuples by pair it with each tuple in s</item><item>Place all of these new tuples in the result set</item></list></item>
+      <item>Example </item>
+    </list>
+          
+          <figure id="id6382109">
+            <media id="id7042469" alt=""><image src="../../media/graphics8.png" mime-type="image/png"/></media>
+          <caption>Catesian Product Operation Notation</caption>
+          </figure>
+          <figure id="id5629049">
+            <media id="id8767490" alt=""><image src="../../media/graphics9.png" mime-type="image/png"/></media>
+          <caption>Catesian Product Operation Example</caption>
+
+          </figure>
+          <list id="id5629073" list-type="bulleted">
+            <item>Note: As we can notice, the CARTESIAN PRODUCT operation by itself is not a useful querying mechanism since the result size is large. However, it is an extremely important operation of relational algebra since it is the basic mechanism for combining information across relations. We will discuss about this topic in more detail in Query Processing lecture. </item>
+          </list>
+          <para id="id5629088"/>
+        </section>
+        <section id="id-537003065491">
+          <title>Other Relational Algebra Operations </title>
+          <list id="id4052231" list-type="enumerated"><item><term>SELECT Operation</term></item>
+          </list>
+          <para id="id4052239">The SELECT operation is an unary operation. It means the input of this operation is only one relation and it output is also a relation. </para>
+          <para id="id4052246">The SELECT operation returns a subset of the tuples from a relation that satisfies a selection condition. The SELECT operation can be viewed as a horizontal filter of the relation. It partitions the input relation into two sets of tuples: those tuples that satisfies the condition are select, those do not satisfy the condition are discarded. </para>
+          <list id="id4052256" list-type="bulleted"><item>Notation: 
+<m:math><m:semantics><m:mtable><m:mtr><m:mrow><m:msub><m:mi>σ</m:mi><m:mrow><m:mstyle fontsize="8pt"><m:mrow><m:mrow><m:mrow/><m:mstyle fontstyle="italic"><m:mrow><m:mtext>selection</m:mtext></m:mrow></m:mstyle><m:mrow><m:mi/><m:mo stretchy="false">−</m:mo><m:mi/></m:mrow><m:mrow><m:mstyle fontstyle="italic"><m:mrow><m:mtext>condition</m:mtext></m:mrow></m:mstyle><m:mo stretchy="false">&gt;</m:mo><m:mrow/></m:mrow></m:mrow></m:mrow></m:mstyle><m:mo stretchy="false">(</m:mo><m:mi>r</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:msub><m:mrow/></m:mrow></m:mtr><m:mtr><m:mstyle fontsize="12pt"><m:mrow><m:mrow/></m:mrow></m:mstyle></m:mtr></m:mtable><m:annotation encoding="StarMath 5.0"> size 12{σ rSub { size 8{ ital "selection"` - ` ital "condition"}}  \( r \) } {}</m:annotation></m:semantics></m:math></item>
+          </list>
+          <figure id="id5212275">
+            <media id="id1346512" alt=""><image src="../../media/graphics10.png" mime-type="image/png"/></media>
+          <caption>Select Operation Notation</caption>
+
+          </figure>
+          <list id="id5212298" list-type="bulleted"><item>
+              <m:math>
+                <m:semantics>
+                  <m:mrow>
+                    <m:mstyle fontsize="12pt">
+                      <m:mrow>
+                        <m:mrow>
+                          <m:msub>
+                            <m:mi>σ</m:mi>
+                            <m:mstyle fontsize="8pt">
+                              <m:mrow>
+                                <m:mi>F</m:mi>
+                              </m:mrow>
+                            </m:mstyle>
+                          </m:msub>
+                          <m:mo stretchy="false">(</m:mo>
+                          <m:mi>r</m:mi>
+                          <m:mo stretchy="false">)</m:mo>
+                          <m:mrow>
+                            <m:mi/>
+                            <m:mo stretchy="false">=</m:mo>
+                            <m:mi/>
+                          </m:mrow>
+                          <m:mrow>
+                            <m:mo stretchy="false">{</m:mo>
+                            <m:mrow>
+                              <m:mi>t</m:mi>
+                              <m:mo stretchy="false">∣</m:mo>
+                              <m:mi/>
+                              <m:mrow>
+                                <m:mi>t</m:mi>
+                                <m:mo stretchy="false">∈</m:mo>
+                                <m:mi/>
+                              </m:mrow>
+                              <m:mrow>
+                                <m:mi>r</m:mi>
+                                <m:mo stretchy="false">∧</m:mo>
+                                <m:mi/>
+                              </m:mrow>
+                              <m:mi>F</m:mi>
+                              <m:mo stretchy="false">(</m:mo>
+                              <m:mi>t</m:mi>
+                              <m:mo stretchy="false">)</m:mo>
+                            </m:mrow>
+                            <m:mo stretchy="false">}</m:mo>
+                          </m:mrow>
+                          <m:mi/>
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mstyle>
+                    <m:mrow/>
+                  </m:mrow>
+                  <m:annotation encoding="StarMath 5.0"> size 12{σ rSub { size 8{F} }  \( r \) `=` lbrace t \lline `t in `r and `F \( t \)  rbrace `} {}</m:annotation>
+                </m:semantics>
+              </m:math> where r(R) and F is a boolean expression on attributes in R
+            </item>
+     </list>
+          
+          <para id="id5628728">The selection condition is made up of a number of clauses of the form </para>
+          <list id="id5628735" list-type="bulleted"><item>&lt;attribute name&gt; &lt;comparison op&gt; &lt;constant value&gt; OR</item>
+            <item>&lt;attribute name 1&gt; &lt;comparison op&gt; &lt;attribute name 2&gt; </item>
+          </list>
+          <para id="id5628750">In the clause, the comparison operations could be one of the following: ≤, ≥, ≠, =, &gt;, &lt; . Clauses are connected by Boolean operators : and, or , not </para>
+          <list id="id6025740" list-type="bulleted">
+            <item>Result size 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mo stretchy="false">∣</m:mo><m:msub><m:mi>σ</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mi>F</m:mi></m:mrow></m:mstyle></m:msub><m:mo stretchy="false">(</m:mo><m:mi>r</m:mi><m:mo stretchy="false">)</m:mo><m:mrow><m:mo stretchy="false">∣</m:mo><m:mo stretchy="false">≤</m:mo><m:mi/></m:mrow><m:mo stretchy="false">∣</m:mo><m:mi>r</m:mi><m:mo stretchy="false">∣</m:mo><m:mi/></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ \lline σ rSub { size 8{F} }  \( r \)  \lline  &lt;= ` \lline r \lline `} {}</m:annotation></m:semantics></m:math></item>
+            <item>Result schema: R</item>
+            <item>Producing the result of the SELECT operation<list id="id5745507" list-type="bulleted"><item>Selection condition F is evaluate for each tuple in r, with the attribute variables in F set to their values in the tuples</item><item>Any tuple t that F(t) = true is placed in the result set</item><item>Other tuples are not include in the result. </item></list></item>
+            <item>Example: Retrieve the Id, Name, Suburb of students who live in Bundoora</item>
+          </list>
+          <figure id="id5745538">
+            <media id="id1166734374973" alt=""><image src="../../media/graphics11.png" mime-type="image/png"/></media>
+          <caption>Select Operation Example - 1</caption>
+
+          </figure>
+          <list id="id5378360" list-type="bulleted">
+            <item>Example: Retrieve the Id, Name, Suburd of student who’s name is Mary or students who live in Bundoora </item>
+          </list>
+          <figure id="id5378375">
+            <media id="id1166740541658" alt=""><image src="../../media/graphics12.png" mime-type="image/png"/></media>
+          <caption>Select Operation Example - 2</caption>
+
+          </figure>
+          <list id="id5378399" list-type="enumerated"><item><term>PROJECT Operation</term></item>
+          </list>
+          <para id="id5378410">The PROJECT operation is another unary operation. This operation returns a set of tuples containing a subset of the attributes in the original relation. Thus, as we state that the SELECT operation selects some rows and discards the others. The PROJECT operation, on the other hand, selects some columns of the relation and discards the other column. The PROJECT operation can be viewed as the vertical filter of the relation. </para>
+          <list id="id5707877" list-type="bulleted"><item>Notation: 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:msub><m:mi>π</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mrow><m:mstyle fontstyle="italic"><m:mrow><m:mtext>attribute</m:mtext></m:mrow></m:mstyle><m:mrow><m:mi/><m:mo stretchy="false">−</m:mo><m:mstyle fontstyle="italic"><m:mrow><m:mtext>list</m:mtext></m:mrow></m:mstyle></m:mrow></m:mrow></m:mrow></m:mstyle></m:msub><m:mo stretchy="false">(</m:mo><m:mi>r</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{π rSub { size 8{ ital "attribute"` -  ital "list"} }  \( r \) } {}</m:annotation></m:semantics></m:math></item>
+    </list>
+          <figure id="id5309286">
+            <media id="id8579446" alt=""><image src="../../media/graphics13.png" mime-type="image/png"/></media>
+          <caption>Project Operation Notation</caption>
+
+          </figure>
+          <list id="id5309310" list-type="bulleted"><item>
+              <m:math>
+                <m:semantics>
+                  <m:mrow>
+                    <m:mstyle fontsize="12pt">
+                      <m:mrow>
+                        <m:mrow>
+                          <m:msub>
+                            <m:mi>π</m:mi>
+                            <m:mstyle fontsize="8pt">
+                              <m:mrow>
+                                <m:mi>X</m:mi>
+                              </m:mrow>
+                            </m:mstyle>
+                          </m:msub>
+                          <m:mo stretchy="false">(</m:mo>
+                          <m:mi>r</m:mi>
+                          <m:mo stretchy="false">)</m:mo>
+                          <m:mrow>
+                            <m:mi/>
+                            <m:mo stretchy="false">=</m:mo>
+                            <m:mi/>
+                          </m:mrow>
+                          <m:mrow>
+                            <m:mo stretchy="false">{</m:mo>
+                            <m:mrow>
+                              <m:mi>t</m:mi>
+                              <m:mi/>
+                              <m:mo stretchy="false">[</m:mo>
+                              <m:mi>X</m:mi>
+                              <m:mo stretchy="false">]</m:mo>
+                              <m:mi/>
+                              <m:mo stretchy="false">∣</m:mo>
+                              <m:mrow>
+                                <m:mi>t</m:mi>
+                                <m:mo stretchy="false">∈</m:mo>
+                                <m:mi/>
+                              </m:mrow>
+                              <m:mi>r</m:mi>
+                            </m:mrow>
+                            <m:mo stretchy="false">}</m:mo>
+                          </m:mrow>
+                          <m:mi/>
+                          
+                        </m:mrow>
+                      </m:mrow>
+                    </m:mstyle>
+                    <m:mrow/>
+                  </m:mrow>
+                  <m:annotation encoding="StarMath 5.0"> size 12{π rSub { size 8{X} }  \( r \) `=` lbrace t` \[ X \] ` \lline t in `r rbrace ` } {}</m:annotation>
+                </m:semantics>
+              </m:math> where r(R)
+            </item>
+            <item>Result size: 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mo stretchy="false">∣</m:mo><m:msub><m:mi>π</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mi>X</m:mi></m:mrow></m:mstyle></m:msub><m:mo stretchy="false">(</m:mo><m:mi>r</m:mi><m:mo stretchy="false">)</m:mo><m:mrow><m:mo stretchy="false">∣</m:mo><m:mo stretchy="false">≤</m:mo><m:mi/></m:mrow><m:mo stretchy="false">∣</m:mo><m:mi>r</m:mi><m:mo stretchy="false">∣</m:mo><m:mi/></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ \lline π rSub { size 8{X} }  \( r \)  \lline  &lt;= ` \lline r \lline `} {}</m:annotation></m:semantics></m:math></item>
+            <item>Result schema: R’(X) </item>
+            <item>Producing the result of PROJECT operation<list id="id6041431" list-type="bulleted"><item>Take each tuple in the original relation, extract the values of the specified attributes</item><item>Form new tuple from these values and place the new tuple in the result if it is not already there. This steps includes the duplicate removal phase, this makes the result of PROJECT operation a relation </item></list></item>
+          </list>
+          <list id="id6060661" list-type="bulleted">
+            <item>Example: Retrieve the suburbs that are stored in database</item>
+          </list>
+          <figure id="id6060673">
+            <media id="id1166736626381" alt=""><image src="../../media/graphics14.png" mime-type="image/png"/></media>
+          <caption>Project Operation Example - 1</caption>
+
+          </figure>
+          <list id="id6060697" list-type="bulleted">
+            <item>Retrieve the name of the subjects and department which is responsible for the subject</item>
+          </list>
+          <figure id="id6295853">
+            <media id="id1166732913118" alt=""><image src="../../media/graphics15.png" mime-type="image/png"/></media>
+          <caption>Project Operation Example - 2</caption>
+
+          </figure>
+          <list id="id6295877" list-type="enumerated"><item><term>JOIN Operation</term></item>
+          </list>
+          <para id="id6295888">The JOIN operation is used to combine related tuples from two relations into a single tuple. The Theta-JOIN is a specialized product containing only pairs that match on a supplied condition called join-condition. </para>
+          <list id="id6295896" list-type="bulleted"><item>Notation: 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mi>r</m:mi><m:mi/><m:mi>⊲</m:mi><m:msub><m:mi>⊳</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mrow><m:mstyle fontstyle="italic"><m:mrow><m:mtext>join</m:mtext></m:mrow></m:mstyle><m:mrow><m:mi/><m:mo stretchy="false">−</m:mo><m:mi/></m:mrow><m:mstyle fontstyle="italic"><m:mrow><m:mtext>condition</m:mtext></m:mrow></m:mstyle></m:mrow></m:mrow></m:mstyle></m:msub><m:mi>s</m:mi></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{r` ⊳  ⊲  rSub { size 8{ ital "join"` - ` ital "condition"} } s} {}</m:annotation></m:semantics></m:math></item>
+    </list>
+          
+          <list id="id6377228" list-type="bulleted"><item><m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mi>r</m:mi><m:mi/><m:mi>⊲</m:mi><m:msub><m:mi>⊳</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mi>C</m:mi></m:mrow></m:mstyle></m:msub><m:mi>s</m:mi><m:mrow><m:mi/><m:mo stretchy="false">=</m:mo><m:mi/></m:mrow><m:mrow><m:mo stretchy="false">{</m:mo><m:mrow><m:mo stretchy="false">(</m:mo><m:mi fontstyle="italic">t1</m:mi><m:mi>,</m:mi><m:mi fontstyle="italic">t2</m:mi><m:mo stretchy="false">)</m:mo><m:mi/><m:mo stretchy="false">∣</m:mo><m:mrow><m:mrow><m:mi fontstyle="italic">t1</m:mi><m:mo stretchy="false">∈</m:mo><m:mrow><m:mi>r</m:mi><m:mo stretchy="false">∧</m:mo><m:mi fontstyle="italic">t2</m:mi></m:mrow></m:mrow><m:mo stretchy="false">∈</m:mo><m:mrow><m:mi>s</m:mi><m:mo stretchy="false">∧</m:mo><m:mi>C</m:mi></m:mrow></m:mrow><m:mo stretchy="false">(</m:mo><m:mi fontstyle="italic">t1</m:mi><m:mi>,</m:mi><m:mi fontstyle="italic">t2</m:mi><m:mo stretchy="false">)</m:mo></m:mrow><m:mo stretchy="false">}</m:mo></m:mrow><m:mi/></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{r` ⊳  ⊲  rSub { size 8{C} } s`=` lbrace  \( t1,t2 \) ` \lline t1 in r and t2 in s and C \( t1,t2 \)  rbrace `} {}</m:annotation></m:semantics></m:math>where r(R) , s(S)</item>
+      <item>Similar to PRODUCT, each tuple in the result of JOIN operation contains all attributes from two original relations. However, in this operation one tuple in R and one tuple in S can be combined together to form a tuple in the result if the combination satisfies the join condition. </item>
+      <item>Join condition is of the form: </item>
+    </list>
+          <para id="id6215611">&lt;condition&gt; AND &lt;condition&gt; AND …AND &lt;condition&gt;</para>
+          <para id="id6009904">where &lt;condition&gt; is a comparision between one attribute in R and one attribute in S, provided that these two attributes have the same domain. </para>
+          <list id="id6009916" list-type="bulleted"><item>Result size: 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mo stretchy="false">∣</m:mo><m:mi>r</m:mi><m:mi/><m:mi>⊲</m:mi><m:msub><m:mi>⊳</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mi>C</m:mi></m:mrow></m:mstyle></m:msub><m:mi/><m:mi>s</m:mi><m:mo stretchy="false">∣</m:mo><m:mrow><m:mi/><m:mo stretchy="false">≤</m:mo><m:mi/></m:mrow><m:mo stretchy="false">∣</m:mo><m:mi>r</m:mi><m:mo stretchy="false">∣</m:mo><m:mrow><m:mi/><m:mo stretchy="false">∗</m:mo><m:mi/></m:mrow><m:mo stretchy="false">∣</m:mo><m:mi>s</m:mi><m:mo stretchy="false">∣</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ \lline r` ⊳  ⊲  rSub { size 8{C} } `s \lline ` &lt;= ` \lline r \lline `*` \lline s \lline } {}</m:annotation></m:semantics></m:math></item>
+      <item>Result schema: If we have R(A1, A2, …, An) and S(B1, B2, …, Bm) then the list of attributes in Result is (A1, A2, …, An, B1, B2, …, Bm)</item>
+      <item>Producing the result of JOIN operation:<list id="id32260359" list-type="bulleted"><item>For each tuple in r, form new tuples by pair it with each tuple in s</item><item>If the new tuple satisfies the specified condition, then place it in the result set. </item></list></item>
+      <item>Example: </item>
+    </list>
+          <figure id="id6124700">
+            <media id="id1166729015323" alt=""><image src="../../media/graphics17.png" mime-type="image/png"/></media>
+          <caption>Join Operation Example - 1</caption>
+
+          </figure>
+          <figure id="id6124727">
+            <media id="id1166729015346" alt=""><image src="../../media/graphics18.png" mime-type="image/png"/></media>
+          <caption>Join Operation Example - 2</caption>
+
+          </figure>
+          <figure id="id6124754">
+            <media id="id7842670" alt=""><image src="../../media/graphics19.png" mime-type="image/png"/></media>
+          <caption>Join Operation Example - 3</caption>
+
+          </figure>
+          <para id="id6192920"><term>Variations of JOIN</term></para>
+          <para id="element-962"><term>EQUI-JOIN:</term> A JOIN where the only comparision operator used in the join condition is “=” is called EQUI-JOIN. The result of Equi Join always has one or more pairs of attributes that have identical values in every tuple.</para>
+          <para id="id6192940">Example: </para>
+          <figure id="id6192949">
+            <media id="id1166739232388" alt=""><image src="../../media/graphics20.png" mime-type="image/png"/></media>
+          <caption>Natural Join Operation Example - 1</caption>
+
+          </figure>
+          <para id="id6297321"><term>NATURAL JOIN:</term> The Natural Join operation is a specialised product where the result tuple contains only pairs of tuples that match on their common attributes with one of each pair of common attributes is eliminated. The standard definition of Natural Join requires that the two join attributes have the same name. Therefore, we can see that Natural Join is created to get rid of the duplicate columns in an Equi Join. </para>
+          <list id="id6297332" list-type="bulleted"><item>Notation: r * s </item>
+            <item>Natural Join can be defined using other operation 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mrow><m:mrow><m:mi>r</m:mi><m:mo stretchy="false">∗</m:mo><m:mi>s</m:mi></m:mrow><m:mo stretchy="false">=</m:mo><m:msub><m:mi>π</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mrow><m:mi>R</m:mi><m:mo stretchy="false">∪</m:mo><m:mi>S</m:mi></m:mrow></m:mrow></m:mstyle></m:msub></m:mrow><m:mo stretchy="false">(</m:mo><m:msub><m:mi>σ</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mstyle fontstyle="italic"><m:mrow><m:mtext>condition</m:mtext></m:mrow></m:mstyle></m:mrow></m:mstyle></m:msub><m:mo stretchy="false">(</m:mo><m:mrow><m:mi>r</m:mi><m:mo stretchy="false">×</m:mo><m:mi>s</m:mi></m:mrow><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{r*s=π rSub { size 8{r union s} }  \( σ rSub { size 8{ ital "condition"} }  \( r times s \)  \) } {}</m:annotation></m:semantics></m:math></item>
+          </list>
+          <para id="id6282606">where r(R) and s(S) and condition is boolean expression (A1 = B1) AND (A2 = B2 ) AND … AND (Ak = Bk) with Ai is the attribute in r , Bi is the attribute in s and (Ai, Bi) is a pair of common attributes. </para>
+          <para id="id5378313">Producing the result of Natural Join</para>
+          <list id="id5378317" list-type="bulleted">
+            <item>For each tuple in relation r, compare common attributes with those in each tuple of s</item>
+            <item>If two tuples match in their common attributes then combine tuples, remove duplicate attributes and add to the result. </item>
+          </list>
+          <list id="id5375473" list-type="bulleted">
+            <item>Example: From the example of Equi Join, assume that the attribute list in s now is ( E, F,B) instead of (E, F, G) then we can have the expression r * s . </item>
+          </list>
+          <figure id="id5375485">
+            <media id="id1166729270379" alt=""><image src="../../media/graphics21.png" mime-type="image/png"/></media>
+          </figure>
+          <list id="id5375509" list-type="bulleted">
+            <item>Retrieve the information of student who enrols in at least one course. </item>
+          </list>
+          <figure id="id5375522"><media id="id1166740260824" alt=""><image src="../../media/relAlgebra-22.png" mime-type="image/png"/></media>
+          <caption>Natural Join Operation Example - 2</caption>
+
+          </figure>
+          <list id="id6055998" list-type="enumerated"><item><term>DIVISION Operation</term></item>
+          </list>
+          <para id="id6056009">The Divition Operation is defined on two relation r(U1) and s(U2) where U2 
+is the subset of U1 and s is not an empty relation: 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mrow><m:mi>r</m:mi><m:mo stretchy="false">÷</m:mo><m:mi>s</m:mi></m:mrow><m:mo stretchy="false">=</m:mo><m:mrow><m:mo stretchy="false">{</m:mo><m:mrow><m:mi>t</m:mi><m:mo stretchy="false">∣</m:mo><m:mrow><m:mi>t</m:mi><m:mo stretchy="false">∈</m:mo><m:mi>r</m:mi></m:mrow><m:mo stretchy="false">(</m:mo><m:mrow><m:msub><m:mi>U</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mn>1</m:mn></m:mrow></m:mstyle></m:msub><m:mo stretchy="false">−</m:mo><m:msub><m:mi>U</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mn>2</m:mn></m:mrow></m:mstyle></m:msub></m:mrow><m:mrow><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">∧</m:mo><m:mstyle fontstyle="italic"><m:mrow><m:mtext>satisfy</m:mtext></m:mrow></m:mstyle></m:mrow></m:mrow><m:mo stretchy="false">}</m:mo></m:mrow></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{r div s= lbrace t \lline t in r \( U rSub { size 8{1} }  - U rSub { size 8{2} }  \)  and  ital "satisfy" rbrace } {}</m:annotation></m:semantics></m:math> where 
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mrow><m:mstyle fontstyle="italic"><m:mrow><m:mtext>satisfy</m:mtext></m:mrow></m:mstyle><m:mo stretchy="false">=</m:mo><m:mo stretchy="false">∀</m:mo></m:mrow><m:mrow><m:msub><m:mi>t</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mi>s</m:mi></m:mrow></m:mstyle></m:msub><m:mo stretchy="false">∈</m:mo><m:mi>s</m:mi></m:mrow><m:mo stretchy="false">(</m:mo><m:mi/><m:mo stretchy="false">∃</m:mo><m:mrow><m:msub><m:mi>t</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mi>r</m:mi></m:mrow></m:mstyle></m:msub><m:mo stretchy="false">∈</m:mo><m:mi>r</m:mi></m:mrow><m:mo stretchy="false">(</m:mo><m:mi/><m:msub><m:mi>t</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mi>r</m:mi></m:mrow></m:mstyle></m:msub><m:mo stretchy="false">[</m:mo><m:msub><m:mi>U</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mn>2</m:mn></m:mrow></m:mstyle></m:msub><m:mrow><m:mo stretchy="false">]</m:mo><m:mo stretchy="false">=</m:mo><m:msub><m:mi>t</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mi>s</m:mi></m:mrow></m:mstyle></m:msub></m:mrow><m:mrow><m:mi/><m:mo stretchy="false">∧</m:mo><m:msub><m:mi>t</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mi>r</m:mi></m:mrow></m:mstyle></m:msub></m:mrow><m:mo stretchy="false">[</m:mo><m:mrow><m:msub><m:mi>U</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mn>1</m:mn></m:mrow></m:mstyle></m:msub><m:mo stretchy="false">−</m:mo><m:msub><m:mi>U</m:mi><m:mstyle fontsize="8pt"><m:mrow><m:mn>2</m:mn></m:mrow></m:mstyle></m:msub></m:mrow><m:mrow><m:mo stretchy="false">]</m:mo><m:mo stretchy="false">=</m:mo><m:mi>t</m:mi></m:mrow><m:mo stretchy="false">)</m:mo><m:mo stretchy="false">)</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ ital "satisfy"= forall t rSub { size 8{s} }  in s \( ` exists t rSub { size 8{r} }  in r \( `t rSub { size 8{r} }  \[ U rSub { size 8{2} }  \] =t rSub { size 8{s} } ` and t rSub { size 8{r} }  \[ U rSub { size 8{1} }  - U rSub { size 8{2} }  \] =t \)  \) } {}</m:annotation></m:semantics></m:math></para>
+          <para id="id6509101">This means that for a tuple t to appear in the result of Division, the values in t must appear in r in combination with every tuple in s.</para>
+          <para id="id6509109">The Division is very useful for a special kind of query such as “ Retrieve the name of the student who enrolls in all course teach by Professor Ba”</para>
+          <list id="id6488359" list-type="bulleted">
+            <item>Producing the result of the Division operation<list id="id6488368" list-type="bulleted"><item>Consider each subset of tuple in r that match on t[U1 – U2]</item><item>For this subset of tuples, take the values t[U2] from each. If this covers all tuples in s then add t[U1 – U2] in the result. </item></list></item>
+            <item>Example: Retrieve the name of subject that is taught in all courses</item>
+          </list>
+          <figure id="id6108661"><media id="id7217790" alt=""><image src="../../media/relAlgebra-23.png" mime-type="image/png"/></media>
+          <caption>Division Operation Example </caption>
+
+          </figure>
+        </section>
+        <section id="id-454745355611">
+          <title>Data Manipulation with Relational Algebra Expression </title>
+          <para id="id6108699"><term>Sample Database</term></para>
+          <para id="id6108703">In this session, we use the COMPANY database in the examples for illustrating the use of Relational Algebra for answering several queries. </para>
+          <para id="id6108710">The relational database schema for the COMPANY database is specified as below</para>
+          <para id="id6108715"><emphasis>EMPLOYEE (EID, Name, Bdate, Address, Salary, DeptId)</emphasis></para>
+          <para id="id6130525"><emphasis>DEPARTMENT(DeptId, Dname, Office, Mng-EID)</emphasis></para>
+          <para id="id6130541"><emphasis>PROJECT(Code, Name, Budget, DeptId)</emphasis></para>
+          <para id="id6130557"><emphasis>JOIN(EID, PCode, StartDate)</emphasis></para>
+          <para id="id6130567"><emphasis>EMP-DEPENDENT(EID, Dependent-Name, Bdate, Relationship) </emphasis></para>
+          <para id="id6110408"><term>Sample Queries</term></para>
+          <para id="id6110412"><emphasis>Query 1:</emphasis> Find all employees whose salary is greater than 30.000 </para>
+          <para id="id6110418">
+            <m:math>
+              <m:semantics>
+                <m:mrow>
+                  <m:mstyle fontsize="12pt">
+                    <m:mrow>
+                      <m:mrow>
+                        <m:msub>
+                          <m:mi>σ</m:mi>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mrow>
+                                <m:mstyle fontstyle="italic">
+                                  <m:mrow>
+                                    <m:mtext>salary</m:mtext>
+                                  </m:mrow>
+                                </m:mstyle>
+                                <m:mrow>
+                                  <m:mi/>
+                                  <m:mo stretchy="false">&gt;</m:mo>
+                                  <m:mi/>
+                                </m:mrow>
+                                <m:mtext>30000</m:mtext>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msub>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mstyle fontstyle="italic">
+                          <m:mrow>
+                            <m:mtext>EMPLOYEE</m:mtext>
+                          </m:mrow>
+                        </m:mstyle>
+                        <m:mo stretchy="false">)</m:mo>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mrow/>
+                </m:mrow>
+                <m:annotation encoding="StarMath 5.0"> size 12{σ rSub { size 8{ ital "salary"`&gt;`"30000"} }  \(  ital "EMPLOYEE" \) } {}</m:annotation>
+              </m:semantics>
+            </m:math>
+          </para>
+          <para id="id5733231"><emphasis>Query 2:</emphasis> Find the name, address of employees who works for department number 1</para>
+          <para id="id5733236">
+            <m:math>
+              <m:semantics>
+                <m:mrow>
+                  <m:mstyle fontsize="12pt">
+                    <m:mrow>
+                      <m:mrow>
+                        <m:msub>
+                          <m:mi>π</m:mi>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mrow>
+                                <m:mstyle fontstyle="italic">
+                                  <m:mrow>
+                                    <m:mtext>Name</m:mtext>
+                                  </m:mrow>
+                                </m:mstyle>
+                                <m:mi>,</m:mi>
+                                <m:mstyle fontstyle="italic">
+                                  <m:mrow>
+                                    <m:mtext>Address</m:mtext>
+                                  </m:mrow>
+                                </m:mstyle>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msub>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:msub>
+                          <m:mi>σ</m:mi>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mrow>
+                                <m:mstyle fontstyle="italic">
+                                  <m:mrow>
+                                    <m:mtext>DeptId</m:mtext>
+                                  </m:mrow>
+                                </m:mstyle>
+                                <m:mrow>
+                                  <m:mi/>
+                                  <m:mo stretchy="false">=</m:mo>
+                                  <m:mi/>
+                                </m:mrow>
+                                <m:mn>1</m:mn>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msub>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mstyle fontstyle="italic">
+                          <m:mrow>
+                            <m:mtext>EMPLOYEE</m:mtext>
+                          </m:mrow>
+                        </m:mstyle>
+                        <m:mi/>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mo stretchy="false">)</m:mo>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mrow/>
+                </m:mrow>
+                <m:annotation encoding="StarMath 5.0"> size 12{π rSub { size 8{ ital "Name", ital "Address"} }  \( σ rSub { size 8{ ital "DeptId"`=`1} }  \(  ital "EMPLOYEE"` \)  \) } {}</m:annotation>
+              </m:semantics>
+            </m:math>
+          </para>
+          <para id="id6029138"><emphasis>Query 3:</emphasis> Find the name of the department that employee John Smith works for. </para>
+          <para id="id6029143">
+            <m:math>
+              <m:semantics>
+                <m:mrow>
+                  <m:mstyle fontsize="12pt">
+                    <m:mrow>
+                      <m:mrow>
+                        <m:msub>
+                          <m:mi>π</m:mi>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mstyle fontstyle="italic">
+                                <m:mrow>
+                                  <m:mtext>Dname</m:mtext>
+                                </m:mrow>
+                              </m:mstyle>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msub>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:msub>
+                          <m:mi>σ</m:mi>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mrow>
+                                <m:mstyle fontstyle="italic">
+                                  <m:mrow>
+                                    <m:mtext>Name</m:mtext>
+                                  </m:mrow>
+                                </m:mstyle>
+                                <m:mrow>
+                                  <m:mi/>
+                                  <m:mo stretchy="false">=</m:mo>
+                                  <m:mi/>
+                                </m:mrow>
+                                <m:mi>'</m:mi>
+                                <m:mstyle fontstyle="italic">
+                                  <m:mrow>
+                                    <m:mtext>John</m:mtext>
+                                  </m:mrow>
+                                </m:mstyle>
+                                <m:mi/>
+                                <m:mstyle fontstyle="italic">
+                                  <m:mrow>
+                                    <m:mtext>Smith</m:mtext>
+                                  </m:mrow>
+                                </m:mstyle>
+                                <m:mi>'</m:mi>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msub>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mrow>
+                          <m:mstyle fontstyle="italic">
+                            <m:mrow>
+                              <m:mtext>EMPLOYEE</m:mtext>
+                            </m:mrow>
+                          </m:mstyle>
+                          <m:mo stretchy="false">∗</m:mo>
+                          <m:mstyle fontstyle="italic">
+                            <m:mrow>
+                              <m:mtext>DEPARTMENT</m:mtext>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:mrow>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mo stretchy="false">)</m:mo>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mrow/>
+                </m:mrow>
+                <m:annotation encoding="StarMath 5.0"> size 12{π rSub { size 8{ ital "Dname"} }  \( σ rSub { size 8{ ital "Name"`=`' ital "John"` ital "Smith"'} }  \(  ital "EMPLOYEE"* ital "DEPARTMENT" \)  \) } {}</m:annotation>
+              </m:semantics>
+            </m:math>
+          </para>
+          <para id="id5860837"><emphasis>Query 4:</emphasis> Find the EID, start date of the employees who works for project number P1 or project number P2 </para>
+          <para id="id5860843">
+            <m:math>
+              <m:semantics>
+                <m:mrow>
+                  <m:mstyle fontsize="12pt">
+                    <m:mrow>
+                      <m:mrow>
+                        <m:msub>
+                          <m:mi>π</m:mi>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mrow>
+                                <m:mstyle fontstyle="italic">
+                                  <m:mrow>
+                                    <m:mtext>EID</m:mtext>
+                                  </m:mrow>
+                                </m:mstyle>
+                                <m:mi>,</m:mi>
+                                <m:mstyle fontstyle="italic">
+                                  <m:mrow>
+                                    <m:mtext>StartDate</m:mtext>
+                                  </m:mrow>
+                                </m:mstyle>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msub>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:msub>
+                          <m:mi>σ</m:mi>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mrow>
+                                <m:mstyle fontstyle="italic">
+                                  <m:mrow>
+                                    <m:mtext>PCode</m:mtext>
+                                  </m:mrow>
+                                </m:mstyle>
+                                <m:mrow>
+                                  <m:mi/>
+                                  <m:mo stretchy="false">=</m:mo>
+                                  <m:mi/>
+                                </m:mrow>
+                                <m:mn>1</m:mn>
+                                <m:mrow>
+                                  <m:mi/>
+                                  <m:mo stretchy="false">∨</m:mo>
+                                  <m:mi/>
+                                </m:mrow>
+                                <m:mstyle fontstyle="italic">
+                                  <m:mrow>
+                                    <m:mtext>PCode</m:mtext>
+                                  </m:mrow>
+                                </m:mstyle>
+                                <m:mrow>
+                                  <m:mi/>
+                                  <m:mo stretchy="false">=</m:mo>
+                                  <m:mi/>
+                                </m:mrow>
+                                <m:mn>2</m:mn>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msub>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mstyle fontstyle="italic">
+                          <m:mrow>
+                            <m:mtext>JOIN</m:mtext>
+                          </m:mrow>
+                        </m:mstyle>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mo stretchy="false">)</m:mo>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mrow/>
+                </m:mrow>
+                <m:annotation encoding="StarMath 5.0"> size 12{π rSub { size 8{ ital "EID", ital "StartDate"} }  \( σ rSub { size 8{ ital "PCode"`=`1` or ` ital "PCode"`=`2} }  \(  ital "JOIN" \)  \) } {}</m:annotation>
+              </m:semantics>
+            </m:math>
+          </para>
+          <para id="id5629146"><emphasis>Query 5: </emphasis>Find the name, relationship of all the dependents of employees who works for Department Human Resource</para>
+          <para id="id5629152">
+            <m:math>
+              <m:semantics>
+                <m:mrow>
+                  <m:mrow>
+                    <m:mtable>
+                      <m:mtr>
+                        <m:mrow>
+                          <m:mstyle fontsize="12pt">
+                            <m:mrow>
+                              <m:mrow>
+                                <m:msub>
+                                  <m:mi>π</m:mi>
+                                  <m:mstyle fontsize="8pt">
+                                    <m:mrow>
+                                      <m:mrow>
+                                        <m:mrow>
+                                          <m:mstyle fontstyle="italic">
+                                            <m:mrow>
+                                              <m:mtext>Dependent</m:mtext>
+                                            </m:mrow>
+                                          </m:mstyle>
+                                          <m:mo stretchy="false">−</m:mo>
+                                          <m:mstyle fontstyle="italic">
+                                            <m:mrow>
+                                              <m:mtext>Name</m:mtext>
+                                            </m:mrow>
+                                          </m:mstyle>
+                                        </m:mrow>
+                                        <m:mtext>,Re</m:mtext>
+                                        <m:mstyle fontstyle="italic">
+                                          <m:mrow>
+                                            <m:mtext>lationship</m:mtext>
+                                          </m:mrow>
+                                        </m:mstyle>
+                                      </m:mrow>
+                                    </m:mrow>
+                                  </m:mstyle>
+                                </m:msub>
+                                <m:mo stretchy="false">(</m:mo>
+                                <m:msub>
+                                  <m:mi>σ</m:mi>
+                                  <m:mstyle fontsize="8pt">
+                                    <m:mrow>
+                                      <m:mrow>
+                                        <m:mstyle fontstyle="italic">
+                                          <m:mrow>
+                                            <m:mtext>DName</m:mtext>
+                                          </m:mrow>
+                                        </m:mstyle>
+                                        <m:mrow>
+                                          <m:mi/>
+                                          <m:mo stretchy="false">=</m:mo>
+                                          <m:mi/>
+                                        </m:mrow>
+                                        <m:mi>'</m:mi>
+                                        <m:mstyle fontstyle="italic">
+                                          <m:mrow>
+                                            <m:mtext>Human</m:mtext>
+                                          </m:mrow>
+                                        </m:mstyle>
+                                        <m:mi/>
+                                        <m:mtext>Re</m:mtext>
+                                        <m:mstyle fontstyle="italic">
+                                          <m:mrow>
+                                            <m:mtext>source</m:mtext>
+                                          </m:mrow>
+                                        </m:mstyle>
+                                        <m:mi>'</m:mi>
+                                      </m:mrow>
+                                    </m:mrow>
+                                  </m:mstyle>
+                                </m:msub>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mstyle>
+                          <m:mrow/>
+                        </m:mrow>
+                      </m:mtr>
+                      <m:mtr>
+                        <m:mrow>
+                          <m:mo stretchy="false">(</m:mo>
+                          <m:mrow>
+                            <m:mstyle fontstyle="italic">
+                              <m:mrow>
+                                <m:mtext>EMP</m:mtext>
+                              </m:mrow>
+                            </m:mstyle>
+                            <m:mo stretchy="false">−</m:mo>
+                            <m:mrow>
+                              <m:mrow>
+                                <m:mstyle fontstyle="italic">
+                                  <m:mrow>
+                                    <m:mtext>DEPENDENT</m:mtext>
+                                  </m:mrow>
+                                </m:mstyle>
+                                <m:mo stretchy="false">∗</m:mo>
+                                <m:mstyle fontstyle="italic">
+                                  <m:mrow>
+                                    <m:mtext>EMPLOYEE</m:mtext>
+                                  </m:mrow>
+                                </m:mstyle>
+                              </m:mrow>
+                              <m:mo stretchy="false">∗</m:mo>
+                              <m:mstyle fontstyle="italic">
+                                <m:mrow>
+                                  <m:mtext>DEPARTMENT</m:mtext>
+                                </m:mrow>
+                              </m:mstyle>
+                            </m:mrow>
+                          </m:mrow>
+                          <m:mo stretchy="false">)</m:mo>
+                          <m:mo stretchy="false">)</m:mo>
+                          <m:mrow/>
+                        </m:mrow>
+                      </m:mtr>
+                    </m:mtable>
+                    <m:mrow/>
+                  </m:mrow>
+                </m:mrow>
+                <m:annotation encoding="StarMath 5.0">alignl { stack {
+ size 12{π rSub { size 8{ ital "Dependent" -  ital "Name"",Re" ital "lationship"} }  \( σ rSub { size 8{ ital "DName"`=`' ital "Human"`"Re" ital "source"'} } }  {} # 
+ \(  ital "EMP" -  ital "DEPENDENT"* ital "EMPLOYEE"* ital "DEPARTMENT" \)  \)  {} 
+} } {}</m:annotation>
+              </m:semantics>
+            </m:math>
+          </para>
+          <para id="id6213819"><emphasis>Query 6:</emphasis> Finds the name of the employees who join in every project. </para>
+          <para id="id6213824">
+            <m:math>
+              <m:semantics>
+                <m:mrow>
+                  <m:mstyle fontsize="12pt">
+                    <m:mrow>
+                      <m:mrow>
+                        <m:msub>
+                          <m:mi>π</m:mi>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mstyle fontstyle="italic">
+                                <m:mrow>
+                                  <m:mtext>Name</m:mtext>
+                                </m:mrow>
+                              </m:mstyle>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msub>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mrow>
+                          <m:mstyle fontstyle="italic">
+                            <m:mrow>
+                              <m:mtext>EMPLOYEE</m:mtext>
+                            </m:mrow>
+                          </m:mstyle>
+                          <m:mo stretchy="false">∗</m:mo>
+                          <m:mo stretchy="false">(</m:mo>
+                        </m:mrow>
+                        <m:msub>
+                          <m:mi>π</m:mi>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mrow>
+                                <m:mstyle fontstyle="italic">
+                                  <m:mrow>
+                                    <m:mtext>EID</m:mtext>
+                                  </m:mrow>
+                                </m:mstyle>
+                                <m:mi>,</m:mi>
+                                <m:mstyle fontstyle="italic">
+                                  <m:mrow>
+                                    <m:mtext>PCode</m:mtext>
+                                  </m:mrow>
+                                </m:mstyle>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msub>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mstyle fontstyle="italic">
+                          <m:mrow>
+                            <m:mtext>JOIN</m:mtext>
+                          </m:mrow>
+                        </m:mstyle>
+                        <m:mrow>
+                          <m:mo stretchy="false">)</m:mo>
+                          <m:mo stretchy="false">÷</m:mo>
+                          <m:msub>
+                            <m:mi>π</m:mi>
+                            <m:mstyle fontsize="8pt">
+                              <m:mrow>
+                                <m:mstyle fontstyle="italic">
+                                  <m:mrow>
+                                    <m:mtext>Code</m:mtext>
+                                  </m:mrow>
+                                </m:mstyle>
+                              </m:mrow>
+                            </m:mstyle>
+                          </m:msub>
+                        </m:mrow>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mstyle fontstyle="italic">
+                          <m:mrow>
+                            <m:mtext>PROJECT</m:mtext>
+                          </m:mrow>
+                        </m:mstyle>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mo stretchy="false">)</m:mo>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mrow/>
+                </m:mrow>
+                <m:annotation encoding="StarMath 5.0"> size 12{π rSub { size 8{ ital "Name"} }  \(  ital "EMPLOYEE"* \( π rSub { size 8{ ital "EID", ital "PCode"} }  \(  ital "JOIN" \)  div π rSub { size 8{ ital "Code"} }  \(  ital "PROJECT" \)  \)  \) } {}</m:annotation>
+              </m:semantics>
+            </m:math>
+          </para>
+          <para id="id6199176"><emphasis>Query 7:</emphasis> Finds the names of the employees who have no dependent</para>
+          <para id="id6199181">
+            <m:math>
+              <m:semantics>
+                <m:mtable>
+                  <m:mtr>
+                    <m:mrow/>
+                  </m:mtr>
+                  <m:mtr>
+                    <m:mrow>
+                      <m:mstyle fontsize="12pt">
+                        <m:mrow>
+                          <m:mrow>
+                            <m:msub>
+                              <m:mi>π</m:mi>
+                              <m:mstyle fontsize="8pt">
+                                <m:mrow>
+                                  <m:mstyle fontstyle="italic">
+                                    <m:mrow>
+                                      <m:mtext>Name</m:mtext>
+                                    </m:mrow>
+                                  </m:mstyle>
+                                </m:mrow>
+                              </m:mstyle>
+                            </m:msub>
+                            <m:mo stretchy="false">(</m:mo>
+                            <m:mrow>
+                              <m:mstyle fontstyle="italic">
+                                <m:mrow>
+                                  <m:mtext>EMPLOYEE</m:mtext>
+                                </m:mrow>
+                              </m:mstyle>
+                              <m:mo stretchy="false">∗</m:mo>
+                              <m:mo stretchy="false">(</m:mo>
+                            </m:mrow>
+                            <m:msub>
+                              <m:mi>π</m:mi>
+                              <m:mstyle fontsize="8pt">
+                                <m:mrow>
+                                  <m:mstyle fontstyle="italic">
+                                    <m:mrow>
+                                      <m:mtext>EID</m:mtext>
+                                    </m:mrow>
+                                  </m:mstyle>
+                                </m:mrow>
+                              </m:mstyle>
+                            </m:msub>
+                            <m:mo stretchy="false">(</m:mo>
+                            <m:mstyle fontstyle="italic">
+                              <m:mrow>
+                                <m:mtext>EMPLOYEE</m:mtext>
+                              </m:mrow>
+                            </m:mstyle>
+                            <m:mo stretchy="false">)</m:mo>
+                            <m:mi/>
+                            <m:msub>
+                              <m:mo stretchy="false"/>
+                              <m:mstyle fontsize="8pt">
+                                <m:mrow>
+                                  <m:mstyle fontstyle="italic">
+                                    <m:mrow>
+                                      <m:mtext>EID</m:mtext>
+                                    </m:mrow>
+                                  </m:mstyle>
+                                </m:mrow>
+                              </m:mstyle>
+                            </m:msub>
+                            <m:mo stretchy="false">(</m:mo>
+                            <m:mrow>
+                              <m:mstyle fontstyle="italic">
+                                <m:mrow>
+                                  <m:mtext>EMP</m:mtext>
+                                </m:mrow>
+                              </m:mstyle>
+                              <m:mo stretchy="false">−</m:mo>
+                              <m:mstyle fontstyle="italic">
+                                <m:mrow>
+                                  <m:mtext>DEPENDENT</m:mtext>
+                                </m:mrow>
+                              </m:mstyle>
+                            </m:mrow>
+                            <m:mo stretchy="false">)</m:mo>
+                            <m:mo stretchy="false">)</m:mo>
+                            <m:mo stretchy="false">)</m:mo>
+                          </m:mrow>
+                        </m:mrow>
+                      </m:mstyle>
+                      <m:mrow/>
+                    </m:mrow>
+                  </m:mtr>
+                </m:mtable>
+                <m:annotation encoding="StarMath 5.0"> size 12{π rSub { size 8{ ital "Name"} }  \(  ital "EMPLOYEE"* \( π rSub { size 8{ ital "EID"} }  \(  ital "EMPLOYEE" \) `\`π rSub { size 8{ ital "EID"} }  \(  ital "EMP" -  ital "DEPENDENT" \)  \)  \) } {}</m:annotation>
+              </m:semantics>
+            </m:math>
+          </para>
+          <para id="id6087460"><emphasis>Query 8:</emphasis> Find the name of employees who works for both project number 1 and project number 2</para>
+          <para id="id6087466">
+            <m:math>
+              <m:semantics>
+                <m:mrow>
+                  <m:mstyle fontsize="12pt">
+                    <m:mrow>
+                      <m:mrow>
+                        <m:msub>
+                          <m:mi>π</m:mi>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mstyle fontstyle="italic">
+                                <m:mrow>
+                                  <m:mtext>Name</m:mtext>
+                                </m:mrow>
+                              </m:mstyle>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msub>
+                        <m:mi/>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mstyle fontstyle="italic">
+                          <m:mrow>
+                            <m:mtext>EMPLOYEE</m:mtext>
+                          </m:mrow>
+                        </m:mstyle>
+                        <m:mrow>
+                          <m:mi/>
+                          <m:mo stretchy="false">∗</m:mo>
+                          <m:mo stretchy="false">(</m:mo>
+                        </m:mrow>
+                        <m:msub>
+                          <m:mi>π</m:mi>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mstyle fontstyle="italic">
+                                <m:mrow>
+                                  <m:mtext>EID</m:mtext>
+                                </m:mrow>
+                              </m:mstyle>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msub>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:msub>
+                          <m:mi>σ</m:mi>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mrow>
+                                <m:mstyle fontstyle="italic">
+                                  <m:mrow>
+                                    <m:mtext>PCode</m:mtext>
+                                  </m:mrow>
+                                </m:mstyle>
+                                <m:mrow>
+                                  <m:mi/>
+                                  <m:mo stretchy="false">=</m:mo>
+                                  <m:mi/>
+                                </m:mrow>
+                                <m:mn>1</m:mn>
+                                <m:mi/>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msub>
+                        <m:mstyle fontstyle="italic">
+                          <m:mrow>
+                            <m:mtext>JOIN</m:mtext>
+                          </m:mrow>
+                        </m:mstyle>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mrow>
+                          <m:mi/>
+                          <m:mo stretchy="false">∩</m:mo>
+                          <m:mi/>
+                        </m:mrow>
+                        <m:msub>
+                          <m:mi>π</m:mi>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mstyle fontstyle="italic">
+                                <m:mrow>
+                                  <m:mtext>EID</m:mtext>
+                                </m:mrow>
+                              </m:mstyle>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msub>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:msub>
+                          <m:mi>σ</m:mi>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mrow>
+                                <m:mstyle fontstyle="italic">
+                                  <m:mrow>
+                                    <m:mtext>PCode</m:mtext>
+                                  </m:mrow>
+                                </m:mstyle>
+                                <m:mrow>
+                                  <m:mi/>
+                                  <m:mo stretchy="false">=</m:mo>
+                                  <m:mi/>
+                                </m:mrow>
+                                <m:mn>2</m:mn>
+                                <m:mi/>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msub>
+                        <m:mstyle fontstyle="italic">
+                          <m:mrow>
+                            <m:mtext>JOIN</m:mtext>
+                          </m:mrow>
+                        </m:mstyle>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mi/>
+                        <m:mo stretchy="false">)</m:mo>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mrow/>
+                </m:mrow>
+                <m:annotation encoding="StarMath 5.0"> size 12{π rSub { size 8{ ital "Name"} } ` \(  ital "EMPLOYEE"`* \( π rSub { size 8{ ital "EID"} }  \( σ rSub { size 8{ ital "PCode"`=`1`} }  ital "JOIN" \) ` intersection `π rSub { size 8{ ital "EID"} }  \( σ rSub { size 8{ ital "PCode"`=`2`} }  ital "JOIN" \)  \) ` \) } {}</m:annotation>
+              </m:semantics>
+            </m:math>
+          </para>
+          <para id="id6025274"><emphasis>Query 9:</emphasis> Find the name of the manager who has at least one dependent</para>
+          <para id="id6025280"><m:math>
+              <m:semantics>
+                <m:mrow>
+                  <m:mstyle fontsize="12pt">
+                    <m:mrow>
+                      <m:mrow>
+                        <m:msub>
+                          <m:mi>π</m:mi>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mstyle fontstyle="italic">
+                                <m:mrow>
+                                  <m:mtext>Name</m:mtext>
+                                </m:mrow>
+                              </m:mstyle>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msub>
+                        <m:mi/>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mstyle fontstyle="italic">
+                          <m:mrow>
+                            <m:mtext>EMPLOYEE</m:mtext>
+                          </m:mrow>
+                        </m:mstyle>
+                        <m:mrow>
+                          <m:mi/>
+                          <m:mo stretchy="false">∗</m:mo>
+                          <m:mo stretchy="false">(</m:mo>
+                        </m:mrow>
+                        <m:msub>
+                          <m:mi>π</m:mi>
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mstyle fontstyle="italic">
+                                <m:mrow>
+                                  <m:mtext>EID</m:mtext>
+                                </m:mrow>
+                              </m:mstyle>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msub>
+                        <m:mo stretchy="false">(</m:mo>
+                        <m:mi/>
+                        <m:mrow>
+                          <m:mstyle fontstyle="italic">
+                            <m:mrow>
+                              <m:mtext>EMP</m:mtext>
+                            </m:mrow>
+                          </m:mstyle>
+                          <m:mo stretchy="false">−</m:mo>
+                          <m:mstyle fontstyle="italic">
+                            <m:mrow>
+                              <m:mtext>DEPENDENT</m:mtext>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:mrow>
+                         <m:mi>⊲</m:mi>
+                        <m:msub><m:mi>⊳</m:mi>
+                         
+                          <m:mstyle fontsize="8pt">
+                            <m:mrow>
+                              <m:mrow>
+                                <m:mstyle fontstyle="italic">
+                                  <m:mrow>
+                                    <m:mtext>EID</m:mtext>
+                                  </m:mrow>
+                                </m:mstyle>
+                                <m:mrow>
+                                  <m:mi/>
+                                  <m:mo stretchy="false">=</m:mo>
+                                  <m:mrow>
+                                    <m:mstyle fontstyle="italic">
+                                      <m:mrow>
+                                        <m:mtext>Mng</m:mtext>
+                                      </m:mrow>
+                                    </m:mstyle>
+                                    <m:mo stretchy="false">−</m:mo>
+                                    <m:mstyle fontstyle="italic">
+                                      <m:mrow>
+                                        <m:mtext>EID</m:mtext>
+                                      </m:mrow>
+                                    </m:mstyle>
+                                  </m:mrow>
+                                </m:mrow>
+                              </m:mrow>
+                            </m:mrow>
+                          </m:mstyle>
+                        </m:msub>
+                        <m:mi/>
+                        <m:mstyle fontstyle="italic">
+                          <m:mrow>
+                            <m:mtext>DEPARTMENT</m:mtext>
+                          </m:mrow>
+                        </m:mstyle>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mo stretchy="false">)</m:mo>
+                        <m:mo stretchy="false">)</m:mo>
+                      </m:mrow>
+                    </m:mrow>
+                  </m:mstyle>
+                  <m:mrow/>
+                </m:mrow>
+                <m:annotation encoding="StarMath 5.0"> size 12{π rSub { size 8{ ital "Name"} } ` \(  ital "EMPLOYEE"`* \( π rSub { size 8{ ital "EID"} }  \( ` ital "EMP" -  ital "DEPENDENT" ⊳  ⊲  rSub { size 8{ ital "EID"`= ital "Mng" -  ital "EID"} } ` ital "DEPARTMENT" \)  \)  \) } {}</m:annotation>
+              </m:semantics>
+            </m:math>
+          </para>
+        </section>
+      </section>
+    </content>
+</document>
