@@ -44,7 +44,7 @@
           </figure>
           <list id="id6150054" list-type="bulleted"><item><m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mi fontstyle="italic">r1</m:mi><m:mrow><m:mi/><m:mo stretchy="false">∪</m:mo><m:mi/></m:mrow><m:mrow><m:mi fontstyle="italic">r2</m:mi><m:mo stretchy="false">=</m:mo><m:mrow><m:mo stretchy="false">{</m:mo><m:mrow><m:mi>t</m:mi><m:mo stretchy="false">∣</m:mo><m:mrow><m:mrow><m:mi>t</m:mi><m:mo stretchy="false">∈</m:mo><m:mrow><m:mi fontstyle="italic">r1</m:mi><m:mo stretchy="false">∨</m:mo><m:mi>t</m:mi></m:mrow></m:mrow><m:mo stretchy="false">∈</m:mo><m:mi fontstyle="italic">r2</m:mi></m:mrow></m:mrow><m:mo stretchy="false">}</m:mo></m:mrow></m:mrow></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{r1` union `r2= lbrace t \lline t in r1 or t in r2 rbrace } {}</m:annotation></m:semantics></m:math> where r1(R) and r2(R)  </item>
       <item>Result size: 
-<m:math><m:semantics><m:mrow/><m:annotation encoding="StarMath 5.0">{}</m:annotation></m:semantics></m:math><m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mo stretchy="false">∣</m:mo><m:mi fontstyle="italic">r1</m:mi><m:mrow><m:mi/><m:mo stretchy="false">∪</m:mo><m:mi/></m:mrow><m:mi fontstyle="italic">r2</m:mi><m:mo stretchy="false">∣</m:mo><m:mrow><m:mi/><m:mo stretchy="false">≤</m:mo><m:mi/></m:mrow><m:mo stretchy="false">∣</m:mo><m:mi fontstyle="italic">r1</m:mi><m:mrow><m:mo stretchy="false">∣</m:mo><m:mo stretchy="false">+</m:mo><m:mo stretchy="false">∣</m:mo></m:mrow><m:mi fontstyle="italic">r2</m:mi><m:mo stretchy="false">∣</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ \lline r1` union `r2 \lline ` &lt;= ` \lline r1 \lline + \lline r2 \lline } {}</m:annotation></m:semantics></m:math></item>
+<m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mo stretchy="false">∣</m:mo><m:mi fontstyle="italic">r1</m:mi><m:mrow><m:mi/><m:mo stretchy="false">∪</m:mo><m:mi/></m:mrow><m:mi fontstyle="italic">r2</m:mi><m:mo stretchy="false">∣</m:mo><m:mrow><m:mi/><m:mo stretchy="false">≤</m:mo><m:mi/></m:mrow><m:mo stretchy="false">∣</m:mo><m:mi fontstyle="italic">r1</m:mi><m:mrow><m:mo stretchy="false">∣</m:mo><m:mo stretchy="false">+</m:mo><m:mo stretchy="false">∣</m:mo></m:mrow><m:mi fontstyle="italic">r2</m:mi><m:mo stretchy="false">∣</m:mo></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{ \lline r1` union `r2 \lline ` &lt;= ` \lline r1 \lline + \lline r2 \lline } {}</m:annotation></m:semantics></m:math></item>
       <item>Result schema: R</item>
       <item>Producing the result of UNION<list id="id27113109" list-type="bulleted"><item>Make a copy of relation r1</item><item>For each tuple t in relation r2, check whether it is in the result or not. If it is not already in the result then place it there. </item></list></item>
       <item>Example: </item>
@@ -66,7 +66,7 @@
           </figure>
           <list id="id5724179" list-type="bulleted"><item><m:math><m:semantics><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mi fontstyle="italic">r1</m:mi><m:mrow><m:mi/><m:mo stretchy="false">∩</m:mo><m:mi/></m:mrow><m:mrow><m:mi fontstyle="italic">r2</m:mi><m:mo stretchy="false">=</m:mo><m:mrow><m:mo stretchy="false">{</m:mo><m:mrow><m:mi>t</m:mi><m:mo stretchy="false">∣</m:mo><m:mrow><m:mrow><m:mi>t</m:mi><m:mo stretchy="false">∈</m:mo><m:mrow><m:mi fontstyle="italic">r1</m:mi><m:mo stretchy="false">∧</m:mo><m:mi>t</m:mi></m:mrow></m:mrow><m:mo stretchy="false">∈</m:mo><m:mi fontstyle="italic">r2</m:mi></m:mrow></m:mrow><m:mo stretchy="false">}</m:mo></m:mrow></m:mrow></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow><m:annotation encoding="StarMath 5.0"> size 12{r1` intersection `r2= lbrace t \lline t in r1 and t in r2 rbrace } {}</m:annotation></m:semantics></m:math> where r1(R) and r2(R)</item>
       <item>Result size: 
-<m:math><m:semantics><m:mtable><m:mtr><m:mrow><m:mo stretchy="false">∣</m:mo><m:mi fontstyle="italic">r1</m:mi><m:mrow><m:mi/><m:mo stretchy="false">∩</m:mo><m:mi/></m:mrow><m:mi fontstyle="italic">r2</m:mi><m:mo stretchy="false">∣</m:mo><m:mrow><m:mi/><m:mo stretchy="false">≤</m:mo><m:mi/></m:mrow><m:mtext>min</m:mtext><m:mo stretchy="false">(</m:mo><m:mo stretchy="false">∣</m:mo><m:mi fontstyle="italic">r1</m:mi><m:mo stretchy="false">∣</m:mo><m:mi>,</m:mi><m:mo stretchy="false">∣</m:mo><m:mi fontstyle="italic">r2</m:mi><m:mo stretchy="false">∣</m:mo><m:mo stretchy="false">)</m:mo></m:mrow></m:mtr><m:mtr><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow/></m:mrow></m:mstyle><m:mrow><m:mrow/><m:mrow/></m:mrow></m:mrow></m:mtr></m:mtable><m:annotation encoding="StarMath 5.0"> size 12{ \lline r1` intersection `r2 \lline ` &lt;= `"min" \(  \lline r1 \lline , \lline r2 \lline  \)  rbrace } {}</m:annotation></m:semantics></m:math></item>
+<m:math><m:semantics><m:mtable><m:mtr><m:mtd><m:mo stretchy="false">∣</m:mo><m:mi fontstyle="italic">r1</m:mi><m:mrow><m:mi/><m:mo stretchy="false">∩</m:mo><m:mi/></m:mrow><m:mi fontstyle="italic">r2</m:mi><m:mo stretchy="false">∣</m:mo><m:mrow><m:mi/><m:mo stretchy="false">≤</m:mo><m:mi/></m:mrow><m:mtext>min</m:mtext><m:mo stretchy="false">(</m:mo><m:mo stretchy="false">∣</m:mo><m:mi fontstyle="italic">r1</m:mi><m:mo stretchy="false">∣</m:mo><m:mi>,</m:mi><m:mo stretchy="false">∣</m:mo><m:mi fontstyle="italic">r2</m:mi><m:mo stretchy="false">∣</m:mo><m:mo stretchy="false">)</m:mo></m:mtd></m:mtr><m:mtr><m:mtd><m:mstyle fontsize="12pt"><m:mrow><m:mrow/></m:mrow></m:mstyle><m:mrow><m:mrow/><m:mrow/></m:mrow></m:mtd></m:mtr></m:mtable><m:annotation encoding="StarMath 5.0"> size 12{ \lline r1` intersection `r2 \lline ` &lt;= `"min" \(  \lline r1 \lline , \lline r2 \lline  \)  rbrace } {}</m:annotation></m:semantics></m:math></item>
       <item>Result schema: R</item>
       <item>Producing the result of INTERSECTION<list id="id33726659" list-type="bulleted"><item>Initially, result set is empty</item><item>For each tuple t in relation r1, if t is in the relation r2 then place t in the result set. </item></list></item>
       <item>Example</item>
@@ -89,7 +89,7 @@
           <caption>Difference Operation Notation</caption>
 
           </figure>
-          <list id="id5742636" list-type="bulleted"><item><m:math><m:semantics><m:mtable><m:mtr><m:mrow/></m:mtr><m:mtr><m:mrow><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mi fontstyle="italic">r1</m:mi><m:mi/><m:mrow><m:mo stretchy="false"/><m:mo stretchy="false">=</m:mo><m:mrow><m:mo stretchy="false">{</m:mo><m:mrow><m:mi>t</m:mi><m:mo stretchy="false">∣</m:mo><m:mrow><m:mi>t</m:mi><m:mo stretchy="false">∈</m:mo><m:mi fontstyle="italic">r1</m:mi></m:mrow><m:mrow><m:mi/><m:mo stretchy="false">∧</m:mo><m:mi/></m:mrow><m:mrow><m:mi>t</m:mi><m:mo stretchy="false">∉</m:mo><m:mi fontstyle="italic">r2</m:mi></m:mrow></m:mrow><m:mo stretchy="false">}</m:mo></m:mrow></m:mrow></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mrow></m:mtr></m:mtable><m:annotation encoding="StarMath 5.0"> size 12{r1`\`r2= lbrace t \lline t in r1` and `t notin r2 rbrace } {}</m:annotation></m:semantics></m:math> where r1(R) and r2(R)</item>
+          <list id="id5742636" list-type="bulleted"><item><m:math><m:semantics><m:mtable><m:mtr><m:mtd/></m:mtr><m:mtr><m:mtd><m:mstyle fontsize="12pt"><m:mrow><m:mrow><m:mi fontstyle="italic">r1</m:mi><m:mi/><m:mrow><m:mo stretchy="false"/><m:mo stretchy="false">=</m:mo><m:mrow><m:mo stretchy="false">{</m:mo><m:mrow><m:mi>t</m:mi><m:mo stretchy="false">∣</m:mo><m:mrow><m:mi>t</m:mi><m:mo stretchy="false">∈</m:mo><m:mi fontstyle="italic">r1</m:mi></m:mrow><m:mrow><m:mi/><m:mo stretchy="false">∧</m:mo><m:mi/></m:mrow><m:mrow><m:mi>t</m:mi><m:mo stretchy="false">∉</m:mo><m:mi fontstyle="italic">r2</m:mi></m:mrow></m:mrow><m:mo stretchy="false">}</m:mo></m:mrow></m:mrow></m:mrow></m:mrow></m:mstyle><m:mrow/></m:mtd></m:mtr></m:mtable><m:annotation encoding="StarMath 5.0"> size 12{r1`\`r2= lbrace t \lline t in r1` and `t notin r2 rbrace } {}</m:annotation></m:semantics></m:math> where r1(R) and r2(R)</item>
       <item>Result schema: R</item>
       <item>Producing the result of the DIFFERENCE operation<list id="id30078753" list-type="bulleted"><item>Initially, result set is empty</item><item>For each tuple in r1, check whether it appear in r2 or not. If it does not then place it in the result set. Otherwise, ignores it</item></list></item>
       <item>Example</item>
@@ -132,7 +132,7 @@
           <para id="id4052239">The SELECT operation is an unary operation. It means the input of this operation is only one relation and it output is also a relation. </para>
           <para id="id4052246">The SELECT operation returns a subset of the tuples from a relation that satisfies a selection condition. The SELECT operation can be viewed as a horizontal filter of the relation. It partitions the input relation into two sets of tuples: those tuples that satisfies the condition are select, those do not satisfy the condition are discarded. </para>
           <list id="id4052256" list-type="bulleted"><item>Notation: 
-<m:math><m:semantics><m:mtable><m:mtr><m:mrow><m:msub><m:mi>σ</m:mi><m:mrow><m:mstyle fontsize="8pt"><m:mrow><m:mrow><m:mrow/><m:mstyle fontstyle="italic"><m:mrow><m:mtext>selection</m:mtext></m:mrow></m:mstyle><m:mrow><m:mi/><m:mo stretchy="false">−</m:mo><m:mi/></m:mrow><m:mrow><m:mstyle fontstyle="italic"><m:mrow><m:mtext>condition</m:mtext></m:mrow></m:mstyle><m:mo stretchy="false">&gt;</m:mo><m:mrow/></m:mrow></m:mrow></m:mrow></m:mstyle><m:mo stretchy="false">(</m:mo><m:mi>r</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:msub><m:mrow/></m:mrow></m:mtr><m:mtr><m:mstyle fontsize="12pt"><m:mrow><m:mrow/></m:mrow></m:mstyle></m:mtr></m:mtable><m:annotation encoding="StarMath 5.0"> size 12{σ rSub { size 8{ ital "selection"` - ` ital "condition"}}  \( r \) } {}</m:annotation></m:semantics></m:math></item>
+<m:math><m:semantics><m:mtable><m:mtr><m:mtd><m:msub><m:mi>σ</m:mi><m:mrow><m:mstyle fontsize="8pt"><m:mrow><m:mrow><m:mrow/><m:mstyle fontstyle="italic"><m:mrow><m:mtext>selection</m:mtext></m:mrow></m:mstyle><m:mrow><m:mi/><m:mo stretchy="false">−</m:mo><m:mi/></m:mrow><m:mrow><m:mstyle fontstyle="italic"><m:mrow><m:mtext>condition</m:mtext></m:mrow></m:mstyle><m:mo stretchy="false">&gt;</m:mo><m:mrow/></m:mrow></m:mrow></m:mrow></m:mstyle><m:mo stretchy="false">(</m:mo><m:mi>r</m:mi><m:mo stretchy="false">)</m:mo></m:mrow></m:msub><m:mrow/></m:mtd></m:mtr><m:mtr><m:mstyle fontsize="12pt"><m:mrow><m:mrow/></m:mrow></m:mstyle></m:mtr></m:mtable><m:annotation encoding="StarMath 5.0"> size 12{σ rSub { size 8{ ital "selection"` - ` ital "condition"}}  \( r \) } {}</m:annotation></m:semantics></m:math></item>
           </list>
           <figure id="id5212275">
             <media id="id1346512" alt=""><image src="../../media/graphics10.png" mime-type="image/png"/></media>
@@ -680,7 +680,7 @@ is the subset of U1 and s is not an empty relation:
                   <m:mrow>
                     <m:mtable>
                       <m:mtr>
-                        <m:mrow>
+                        <m:mtd>
                           <m:mstyle fontsize="12pt">
                             <m:mrow>
                               <m:mrow>
@@ -750,10 +750,10 @@ is the subset of U1 and s is not an empty relation:
                             </m:mrow>
                           </m:mstyle>
                           <m:mrow/>
-                        </m:mrow>
+                        </m:mtd>
                       </m:mtr>
                       <m:mtr>
-                        <m:mrow>
+                        <m:mtd>
                           <m:mo stretchy="false">(</m:mo>
                           <m:mrow>
                             <m:mstyle fontstyle="italic">
@@ -787,7 +787,7 @@ is the subset of U1 and s is not an empty relation:
                           <m:mo stretchy="false">)</m:mo>
                           <m:mo stretchy="false">)</m:mo>
                           <m:mrow/>
-                        </m:mrow>
+                        </m:mtd>
                       </m:mtr>
                     </m:mtable>
                     <m:mrow/>
@@ -896,10 +896,10 @@ is the subset of U1 and s is not an empty relation:
               <m:semantics>
                 <m:mtable>
                   <m:mtr>
-                    <m:mrow/>
+                    <m:mtd/>
                   </m:mtr>
                   <m:mtr>
-                    <m:mrow>
+                    <m:mtd>
                       <m:mstyle fontsize="12pt">
                         <m:mrow>
                           <m:mrow>
@@ -978,7 +978,7 @@ is the subset of U1 and s is not an empty relation:
                         </m:mrow>
                       </m:mstyle>
                       <m:mrow/>
-                    </m:mrow>
+                    </m:mtd>
                   </m:mtr>
                 </m:mtable>
                 <m:annotation encoding="StarMath 5.0"> size 12{π rSub { size 8{ ital "Name"} }  \(  ital "EMPLOYEE"* \( π rSub { size 8{ ital "EID"} }  \(  ital "EMPLOYEE" \) `\`π rSub { size 8{ ital "EID"} }  \(  ital "EMP" -  ital "DEPENDENT" \)  \)  \) } {}</m:annotation>
